@@ -34,7 +34,26 @@ import Frangment from "./components/Frangment";
 // 13 - Children
 import Container from "./components/Container";
 
+// 14 - Funcao em prop
+import ExecuteFunction from "./components/ExecuteFunction";
+
+// 15 - State Lift
+import Message from "./components/Message";
+import ChangeMessage from "./components/ChangeMessage";
+
 function App() {
+  // 14 - Funcao em prop
+  function showMessage() {
+    console.log("Evento do componente pai");
+  }
+
+  // 15 - State Lift
+  const [message, setMessage] = useState("");
+
+  const handleMessage = (msg) => {
+    setMessage(msg);
+  };
+
   const [count, setCount] = useState(0);
 
   return (
@@ -72,6 +91,11 @@ function App() {
         <Container>
           <p>Alguma coisa </p>
         </Container>
+        {/* 14 - Funcao em prop */}
+        <ExecuteFunction myFunction={showMessage} />
+        {/* 15 - State Lift */}
+        <Message msg={message} />
+        <ChangeMessage handleMessage={handleMessage} />
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
